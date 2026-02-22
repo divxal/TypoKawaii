@@ -9,6 +9,7 @@ export enum GameMode {
   Infinite = 'infinite',
   FreeWrite = 'freewrite',
   Story = 'story',
+  DailyChallenge = 'daily',
 }
 
 export enum Rank {
@@ -30,17 +31,20 @@ export interface UserStats {
   highestWpm: number;
   rankInfinite: Rank;
   rankFreeWrite: Rank;
-  storyProgress: number; // Highest level unlocked
+  storyProgress: number;
+  achievements: string[];
+  lastDailyCompleted: string | null;
+  highestCombo: number;
 }
 
 export interface User {
   id: string;
   username: string;
-  password?: string; // In a real app, this would be hashed. Storing plain for local mock.
+  password?: string;
   avatarUrl: string;
-  createdAt: string; // ISO Date
+  createdAt: string;
   stats: UserStats;
-  friends: string[]; // List of friend IDs
+  friends: string[];
 }
 
 export interface GameResult {
@@ -52,8 +56,9 @@ export interface GameResult {
   timestamp: number;
   mode: GameMode;
   xpEarned: number;
-  levelId?: number; // For story mode
-  isWin?: boolean; // For story mode
+  levelId?: number;
+  isWin?: boolean;
+  maxCombo: number;
 }
 
 export interface Friend {
@@ -76,3 +81,30 @@ export interface Level {
   minWpm: number;
   minAccuracy: number;
 }
+
+export interface Achievement {
+  id: string;
+  name: string;
+  description: string;
+  icon: string;
+}
+
+export interface DailyChallenge {
+  date: string;
+  text: string;
+  minWpm: number;
+  minAccuracy: number;
+  bonusXp: number;
+}
+
+export interface ThemeConfig {
+  bg: string;
+  primary: string;
+  text: string;
+  border: string;
+  accent: string;
+  button: string;
+  avatar: string;
+}
+
+export type ViewType = 'dashboard' | 'game' | 'storyMap' | 'profile' | 'friends' | 'leaderboard';

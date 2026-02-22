@@ -31,7 +31,10 @@ export const registerUser = (username: string, password: string): User | null =>
       highestWpm: 0,
       rankInfinite: Rank.Unranked,
       rankFreeWrite: Rank.Unranked,
-      storyProgress: 1 // Starts at level 1
+      storyProgress: 1,
+      achievements: [],
+      lastDailyCompleted: null,
+      highestCombo: 0,
     },
     friends: []
   };
