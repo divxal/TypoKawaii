@@ -1,20 +1,38 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
+# TypoKawaii
 
-# Run and deploy your AI Studio app
+Entrenador de mecanografía **en español**, con estética kawaii. Juego, subo de rango y de paso
+aprendo a escribir sin mirar el teclado.
 
-This contains everything you need to run your app locally.
+`React 19` · `TypeScript` · `Vite 6` · `Tailwind (CDN)` · `@google/genai`
 
-View your app in AI Studio: https://ai.studio/apps/drive/1JXdvV046SkLu_4tZgK01ukCzXjSmjbNL
+---
 
-## Run Locally
+## Qué hay dentro
 
-**Prerequisites:**  Node.js
+| Modo | Qué hace |
+|:--|:--|
+| **Infinito** | Frases encadenadas sin final. Mide WPM, precisión y errores de puntuación. |
+| **Free Write** | Escribes libre y el juego puntúa tu propio texto. |
+| **Historia** | Niveles con un mínimo de WPM y precisión para desbloquear el siguiente. |
 
+- **Rangos por modo**: Hierro → Gran Maestro, con XP y nivel acumulados por partida.
+- **Cuatro temas**: Cinnamoroll, Kuromi, My Melody y Pompompurin (avatares de DiceBear).
+- **Atlas**, un asistente con `gemini-2.5-flash`: conoce tu nivel y tu WPM y te sugiere qué
+  practicar. Sin API key el juego funciona igual, solo se queda sin chat.
+- Perfil, estadísticas y amigos en `localStorage`. **No hay backend**: la "cuenta" es local y
+  la contraseña no sale de tu máquina. Es un prototipo de práctica, no un sistema de login.
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+## Correrlo
+
+```bash
+npm install
+echo "API_KEY=tu_api_key_de_gemini" > .env.local   # opcional, solo para el chat de Atlas
+npm run dev
+```
+
+Vite sirve en `http://localhost:5173`. `npm run build` deja el estático en `dist/`.
+
+## Estado
+
+Prototipo jugable y funcional de principio a fin. Pendiente: textos de nivel propios en vez de
+los de prueba y persistencia real si algún día deja de ser local.
